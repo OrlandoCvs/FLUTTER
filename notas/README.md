@@ -34,7 +34,7 @@
 
 | Inicio | Grupos | Listado de Notas |
 | :---: | :---: | :---: |
-| ![Inicio](/screenshots/968b7133-5a6a-40bb-b272-3600c286791b.jpg) | ![Grupos](/screenshots/22525cfe-0f5c-46b5-bec9-ef0cf134a3f8.jpg) | ![Notas](/screenshots/218e57de-a11a-4e9a-a787-04f3c357341c.jpg) | ![VistaNotas](/screenshots/afb857b4-37f7-4479-aa7e-de0c3cc10af7.jpg)|
+| ![Inicio](./screenshots/968b7133-5a6a-40bb-b272-3600c286791b.jpg) | ![Grupos](./screenshots/22525cfe-0f5c-46b5-bec9-ef0cf134a3f8.jpg) | ![Notas](./screenshots/218e57de-a11a-4e9a-a787-04f3c357341c.jpg) | ![VistaNotas](./screenshots/afb857b4-37f7-4479-aa7e-de0c3cc10af7.jpg)|
 
 ## 👤 Autores
 * [cite_start]**Saul Filiberto Espinoza Rivera** 
