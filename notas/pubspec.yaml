@@ -11,9 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   
-  # Base de datos local [cite: 89]
+  # Base de datos local
   sqflite: ^2.3.0
   path: ^1.9.1
+  #imagenes
+  image_picker: ^1.0.7
   
   # Iconos y estilos visuales
   cupertino_icons: ^1.0.8
@@ -27,6 +29,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Configuración para el logo de la Unison [cite: 34, 81]
+  # Configuración para el logo de la Unison 
   assets:
-    - assets/logo_unison.png
+    - assets/

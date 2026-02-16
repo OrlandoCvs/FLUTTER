@@ -34,11 +34,14 @@
 
 | Inicio | Grupos | Listado de Notas |
 | :---: | :---: | :---: |
-| ![Inicio](https://via.placeholder.com/150) | ![Grupos](https://via.placeholder.com/150) | ![Notas](https://via.placeholder.com/150) |
+| ![Inicio](/screenshots/968b7133-5a6a-40bb-b272-3600c286791b.jpg) | ![Grupos](/screenshots/22525cfe-0f5c-46b5-bec9-ef0cf134a3f8.jpg) | ![Notas](/screenshots/218e57de-a11a-4e9a-a787-04f3c357341c.jpg) | ![VistaNotas](/screenshots/afb857b4-37f7-4479-aa7e-de0c3cc10af7.jpg)|
 
-## 👤 Autor
-* [cite_start]**Saul Filiberto Espinoza Rivera** [cite: 34]
+## 👤 Autores
+* [cite_start]**Saul Filiberto Espinoza Rivera** 
+* [cite_start]**Lilian Yeitnaletzi Álvarez portillo** 
+* [cite_start]**María Yamile Valencia Loroña** 
+* [cite_start]**Orlando Cervantes Sousa** 
+* [cite_start]**Hugo Alan Hinojoza Lopez** 
 * Estudiante de Ingeniería en Sistemas de Información - UNISON.
 
 ---
-*Este proyecto fue realizado para la entrega del 21 de marzo de 2026.*
