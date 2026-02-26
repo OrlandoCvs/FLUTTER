@@ -18,7 +18,7 @@ Esta es una aplicación de brújula digital la cual te permitira visualizar siem
 
 | Modo Noche | Modo Día |
 |------------|----------|
-| ![Modo Noche](screenshots/brujula 2.jpg) | ![Modo Día](screenshots/brujula 1.jpg) |
+| ![Modo Noche](brujula_unison/screenshots/brujula2.jpg) | ![Modo Día](brujula_unison/screenshots/brujula3.jpg) |
 
 
 ---
@@ -26,7 +26,7 @@ Esta es una aplicación de brújula digital la cual te permitira visualizar siem
 ### Instalación (APK)
 Puedes descargar e instalar la aplicación directamente en tu dispositivo Android utilizando el siguiente enlace:
 
-[📥 Descargar APK de Brújula Unison](https://github.com/OrlandoCvs/brujula_unison/releases/app-debug.apk)
+[📥 Descargar APK de Brújula Unison](https://github.com/OrlandoCvs/FLUTTER/raw/main/brujula_unison/releases/app-debug.apk)
 
 > **Instrucciones:**
 > 1. Descarga el archivo en tu teléfono.
