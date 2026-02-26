@@ -1,17 +1,34 @@
-# brujula_unison
+# Brújula Unison 🧭
 
-A new Flutter project.
+### Descripción
+Esta es una aplicación de brújula digital la cual te permitira visualizar siempre el norte, ademas cuenta con un modo de dia y noche, con el cual puedes cambiar la tonalidad de la aplicacion para usarla mas comodamente. Ademas se puedes observar en todo momento tu longitud, latitud y altitud. Cuenta con un diseño agradable con una rosa de los vientos fusionado con el logo de la Universidad de Sonora.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+### Tecnologías Utilizadas
+* **Flutter & Dart**: Framework principal para el desarrollo multiplataforma.
+* **flutter_compass**: Para la obtención de datos precisos del sensor magnético.
+* **Google Fonts / Arial**: Tipografía para una lectura clara.
+* **Material Design 3**: Para una interfaz de usuario moderna y adaptativa.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Imágenes de la Aplicación
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+| Modo Noche | Modo Día |
+|------------|----------|
+| ![Modo Noche](screenshots/brujula 2.jpg) | ![Modo Día](screenshots/brujula 1.jpg) |
+
+
+---
+
+### Instalación (APK)
+Puedes descargar e instalar la aplicación directamente en tu dispositivo Android utilizando el siguiente enlace:
+
+[📥 Descargar APK de Brújula Unison](https://github.com/OrlandoCvs/brujula_unison/releases/app-debug.apk)
+
+> **Instrucciones:**
+> 1. Descarga el archivo en tu teléfono.
+> 2. Permite la instalación de fuentes desconocidas si el sistema lo solicita.
+> 3. Y utlizar la app
