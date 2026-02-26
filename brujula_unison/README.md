@@ -18,7 +18,7 @@ Esta es una aplicación de brújula digital la cual te permitira visualizar siem
 
 | Modo Noche | Modo Día |
 |------------|----------|
-| ![Modo Noche](brujula_unison/screenshots/brujula2.jpg) | ![Modo Día](brujula_unison/screenshots/brujula3.jpg) |
+| ![Modo Noche](./screenshots/brujula2.jpg) | ![Modo Día](./screenshots/brujula3.jpg) |
 
 
 ---
