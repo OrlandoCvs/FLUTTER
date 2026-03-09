@@ -3,7 +3,7 @@ import 'dart:async';
 
 void main() => runApp(const LaTriviaApp());
 
-// --- 1. PALETA DE COLORES ---
+// --- COLORES ---
 class TriviaPalette {
   static const Color cream = Color(0xFFFFF7CD);
   static const Color peach = Color(0xFFFDC3A1);
@@ -33,7 +33,7 @@ class LaTriviaApp extends StatelessWidget {
   }
 }
 
-// --- 2. CAPA DE LÓGICA ---
+// --- LÓGICA ---
 class Question {
   final String text;
   final List<String> options;
@@ -85,7 +85,7 @@ class TriviaController {
   }
 }
 
-// --- 3. VISTAS (UI) ---
+// --- VISTAS ---
 
 class InicioView extends StatelessWidget {
   const InicioView({super.key});
@@ -286,12 +286,12 @@ class ResultadoView extends StatelessWidget {
   });
 
   String _getPersonalizedMessage() {
-    // Caso especial: Dificultad Difícil (3 segundos) y 10 buenas
+    // Caso especial: Dificultad Difícil (3 segundos) y 10 buenas el super easter egg
     if (difficultySeconds == 3 && score == 10) {
       return "Eres una bestia de la cultura general, pero... ¿Qué tal vas en la carrera...?";
     }
 
-    // Mensajes generales por puntuación
+    // Mensajes generales para todas las dificultades
     if (score <= 3) return "Estas en el hoyo";
     if (score <= 5) return "Peor es nada... ¿no?";
     if (score <= 7) return "vas por buen camino, pero pudo salir mejor";
