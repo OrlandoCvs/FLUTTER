@@ -27,3 +27,5 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "images/logo_unison.png"
+  image_path: "images/icono_app.png"
+  adaptive_icon_background: "#FFF7CD"
