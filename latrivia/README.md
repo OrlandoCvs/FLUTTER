@@ -1,6 +1,6 @@
 <div align="center">
   <img src="images/logo_unison.png" width="150" alt="Logo Unison">
-  <h1> Desafío Búho: La Trivia Unison</h1>
+  <h1>La Trivia Unison</h1>
   <p><strong>Proyecto - Ingeniería en Sistemas de Información</strong></p>
 
   <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter">
@@ -11,7 +11,7 @@
 ---
 
 ###  Descripción
-**Desafío Búho** es una aplicación móvil de trivia diseñada con 30 preguntas de cultura general, las cuales se seleccionan al azar y estas serán al azar en cada partida que el usuario inicie. Contamos con 3 dificultades y un Easter Egg en caso de que logres responder las 10/10 preguntas en el modo difícil. Al iniciar el juego se mostrará una pregunta y 4 respuestas posibles, de las cuales una sola es correcta; en caso de que no se responda o no se sepa la pregunta, el juego le dirá la correcta y esta no contará en tu puntuación.
+**La Trivia** es una aplicación móvil de trivia diseñada con 30 preguntas de cultura general, las cuales se seleccionan al azar y estas serán al azar en cada partida que el usuario inicie. Contamos con 3 dificultades y un Easter Egg en caso de que logres responder las 10/10 preguntas en el modo difícil. Al iniciar el juego se mostrará una pregunta y 4 respuestas posibles, de las cuales una sola es correcta; en caso de que no se responda o no se sepa la pregunta, el juego le dirá la correcta y esta no contará en tu puntuación.
 
 ###  Características Principales
 * **Banco Dinámico:** Selección de 10 preguntas al azar de un pool de 30, asegurando que cada partida sea única.
