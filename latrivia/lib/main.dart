@@ -77,6 +77,7 @@ class TriviaController {
     Question(text: "¿Órgano que bombea sangre?", options: ["Corazón", "Cerebro", "Pulmones", "Hígado"], correct: "Corazón", topic: "Anatomía"),
   ];
 
+// -- Método para obtener un set de 10 preguntas aleatorias con opciones mezcladas
   List<Question> fetchGameSet() {
     return (_repo..shuffle()).take(10).toList().map((q) {
       q.options.shuffle();
@@ -179,7 +180,7 @@ class _JuegoViewState extends State<JuegoView> with SingleTickerProviderStateMix
       ..addStatusListener((status) { if (status == AnimationStatus.completed) _checkAnswer(null); });
     _timerController.forward();
   }
-
+  // Método para verificar respuesta, actualizar estado y avanzar a la siguiente pregunta o resultado
   void _checkAnswer(String? opt) {
     if (isAnswered) return;
     _timerController.stop();
@@ -189,7 +190,7 @@ class _JuegoViewState extends State<JuegoView> with SingleTickerProviderStateMix
       if (opt == gameQuestions[currentIdx].correct) score++;
       else toStudy.add(gameQuestions[currentIdx].topic);
     });
-
+    // Avanzar a la siguiente pregunta o resultado después de una breve pausa para mostrar feedback
     Future.delayed(const Duration(milliseconds: 1500), () {
       if (mounted) {
         if (currentIdx < 9) {
@@ -212,7 +213,7 @@ class _JuegoViewState extends State<JuegoView> with SingleTickerProviderStateMix
 
   @override
   void dispose() { _timerController.dispose(); super.dispose(); }
-
+  
   @override
   Widget build(BuildContext context) {
     final q = gameQuestions[currentIdx];
@@ -272,7 +273,7 @@ class _JuegoViewState extends State<JuegoView> with SingleTickerProviderStateMix
     );
   }
 }
-
+// Vista de resultado que muestra el puntaje, un mensaje personalizado y los temas a reforzar
 class ResultadoView extends StatelessWidget {
   final int score;
   final List<String> topics;
@@ -284,7 +285,7 @@ class ResultadoView extends StatelessWidget {
     required this.topics, 
     required this.difficultySeconds
   });
-
+  // Método para obtener un mensaje personalizado basado en el puntaje y la dificultad
   String _getPersonalizedMessage() {
     // Caso especial: Dificultad Difícil (3 segundos) y 10 buenas el super easter egg
     if (difficultySeconds == 3 && score == 10) {
@@ -298,7 +299,7 @@ class ResultadoView extends StatelessWidget {
     if (score <= 9) return "Eres bueno, pero no tanto";
     return "Intenta el modo Dificil";
   }
-
+  // Método para construir la vista de resultado con puntaje, mensaje personalizado y temas a reforzar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
