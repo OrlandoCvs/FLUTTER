@@ -66,6 +66,6 @@ Este proyecto fue desarrollado por:
 ### 📦 Release 1.0
 Puedes descargar el instalador directo para Android aquí:
 <br>
-<a href="release/app-release.apk?raw=true">
+<a href="release\app-release.apk?raw=true">
   <img src="https://img.shields.io/badge/Descargar-APK-brightgreen?style=for-the-badge&logo=android" alt="Descargar APK">
 </a>
