@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="images/logo_unison.png" width="150" alt="Logo Unison">
+  <img src="images/icono_app.png" width="150" alt="App Unison">
   <h1>La Trivia Unison</h1>
   <p><strong>Proyecto - Ingeniería en Sistemas de Información</strong></p>
 
