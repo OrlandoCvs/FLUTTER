@@ -11,7 +11,7 @@
 ---
 
 ###  Descripción
-**Desafío Búho** es una aplicación móvil de trivia diseñada para poner a prueba los conocimientos generales de los estudiantes. Cuenta con un banco de 30 preguntas aleatorias, gestión de tiempos por dificultad y una arquitectura robusta que separa la lógica de negocio de la interfaz de usuario.
+**Desafío Búho** es una aplicación móvil de trivia diseñada con 30 preguntas de cultura general, las cuales se seleccionan al azar y estas serán al azar en cada partida que el usuario inicie. Contamos con 3 dificultades y un Easter Egg en caso de que logres responder las 10/10 preguntas en el modo difícil. Al iniciar el juego se mostrará una pregunta y 4 respuestas posibles, de las cuales una sola es correcta; en caso de que no se responda o no se sepa la pregunta, el juego le dirá la correcta y esta no contará en tu puntuación.
 
 ###  Características Principales
 * **Banco Dinámico:** Selección de 10 preguntas al azar de un pool de 30, asegurando que cada partida sea única.
@@ -31,6 +31,18 @@
 | **Flutter SDK** | `^3.11.0` | Framework de Google para desarrollo multiplataforma. |
 | **Dart** | `^3.11.0` | Lenguaje de programación optimizado para UI. |
 | **Material 3** | Nativo | Sistema de diseño de última generación para interfaces fluidas. |
+
+---
+
+###  Paleta de Colores Seleccionada
+Se utilizó una paleta de tonos pasteles cálidos para garantizar una interfaz amigable y de alta legibilidad, inspirada en [ColorHunt](https://colorhunt.co/palette/fff7cdfdc3a1fb9b8ff57799).
+
+| Tono | Hex | Aplicación |
+| :--- | :--- | :--- |
+| ![#FFF7CD](https://img.shields.io/badge/-FFF7CD-FFF7CD?style=flat-square) | `#FFF7CD` | **Fondo:** Color base para descanso visual. |
+| ![#FDC3A1](https://img.shields.io/badge/-FDC3A1-FDC3A1?style=flat-square) | `#FDC3A1` | **Acentos:** Detalles en AppBar y selección. |
+| ![#FB9B8F](https://img.shields.io/badge/-FB9B8F-FB9B8F?style=flat-square) | `#FB9B8F` | **Secundario:** Botones de opciones y chips. |
+| ![#F57799](https://img.shields.io/badge/-F57799-F57799?style=flat-square) | `#F57799` | **Primario:** Títulos y barra de progreso. |
 
 ---
 
