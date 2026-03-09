@@ -1,6 +1,6 @@
 <div align="center">
   <img src="images/logo_unison.png" width="150" alt="Logo Unison">
-  <h1>🦉 Desafío Búho: La Trivia Unison</h1>
+  <h1> Desafío Búho: La Trivia Unison</h1>
   <p><strong>Proyecto - Ingeniería en Sistemas de Información</strong></p>
 
   <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter">
@@ -10,12 +10,13 @@
 
 ---
 
-### 📝 Descripción
+###  Descripción
 **Desafío Búho** es una aplicación móvil de trivia diseñada para poner a prueba los conocimientos generales de los estudiantes. Cuenta con un banco de 30 preguntas aleatorias, gestión de tiempos por dificultad y una arquitectura robusta que separa la lógica de negocio de la interfaz de usuario.
 
-### 🚀 Características Principales
+###  Características Principales
 * **Banco Dinámico:** Selección de 10 preguntas al azar de un pool de 30, asegurando que cada partida sea única.
-* **Tres Niveles de Dificultad:** * 🟢 **Fácil:** 10 segundos por pregunta.
+* **Tres Niveles de Dificultad:** 
+    * 🟢 **Fácil:** 10 segundos por pregunta.
     * 🟡 **Intermedio:** 5 segundos por pregunta.
     * 🔴 **Difícil:** 3 segundos por pregunta.
 * **Feedback Visual:** Animaciones de estado (Verde para correcto, Rojo para incorrecto).
@@ -23,7 +24,7 @@
 
 ---
 
-### 🛠️ Tecnologías Utilizadas
+###  Tecnologías Utilizadas
 
 | Tecnología | Versión | Descripción |
 | :--- | :--- | :--- |
@@ -33,7 +34,7 @@
 
 ---
 
-### 📸 Galería de la Aplicación
+###  Galería de la Aplicación
 
 <table align="center">
   <tr>
@@ -63,9 +64,9 @@ Este proyecto fue desarrollado por:
 
 ---
 
-### 📦 Release 1.0
+###  Release 1.0
 Puedes descargar el instalador directo para Android aquí:
 <br>
-<a href="release\app-release.apk?raw=true">
+<a href="release/app-release.apk?raw=true">
   <img src="https://img.shields.io/badge/Descargar-APK-brightgreen?style=for-the-badge&logo=android" alt="Descargar APK">
 </a>
