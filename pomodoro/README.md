@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="/images/logo_unison.png" width="90" alt="UNISON Logo">
+<img src="images\logo_unison.png" width="90" alt="UNISON Logo">
 
 # 📚 Pomo-UNISON
 ### *Productividad con un toque artesanal*
