@@ -1,140 +1,83 @@
-# 🍅 Pomo-UNISON – Aplicación Pomodoro en Flutter
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Universidad_de_Sonora_Logo.png" width="80" alt="UNISON Logo">
+  <h1>🍅 Pomo-UNISON</h1>
+  <p><i>"Productividad con un toque artesanal"</i></p>
 
-Aplicación móvil desarrollada en **Flutter** que implementa la técnica de productividad **Pomodoro**, permitiendo a los usuarios organizar sesiones de estudio mediante ciclos de trabajo y descanso.
+  <p>
+    <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+    <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
+    <img src="https://img.shields.io/badge/Provider-61.2-blue?style=for-the-badge" alt="Provider">
+  </p>
 
-El objetivo del proyecto es demostrar el manejo de **temporizadores, gestión de estado, navegación entre pantallas y diseño UI/UX personalizado**, siguiendo una estética visual estilo **hand-drawn** o **dibujo a mano**.
+  <hr />
 
----
+  <h3>📱 Descripción de la Aplicación</h3>
+  <p align="justify">
+    <b>Pomo-UNISON</b> es un temporizador interactivo desarrollado en <b>Flutter</b>. Implementa la técnica Pomodoro mediante una estética visual <i>hand-drawn</i> que busca calidez y personalidad en la interfaz. La aplicación gestiona de forma fluida los ciclos de enfoque y descanso, asegurando una experiencia de usuario (UX) pulida y funcional.
+  </p>
 
-# 📱 Descripción de la aplicación
+  <div align="left" style="background-color: #F7F8F0; padding: 15px; border: 2px solid #355872; border-radius: 15px 50px 30px 5px;">
+    <h4>✨ Características Principales</h4>
+    <ul>
+      <li><b>Configuración Flexible:</b> Ajuste de bloques de trabajo (1-60 min) , descanso corto (1-30 min)  y ciclos (1-8).</li>
+      <li><b>Lógica Desacoplada:</b> Gestión de estado mediante Provider para separar la interfaz de la lógica del temporizador.</li>
+      <li><b>Transiciones Orgánicas:</b> Cambios automáticos entre modo trabajo y descanso con notificaciones visuales claras.</li>
+      <li><b>Resumen de Sesión:</b> Retroalimentación detallada del tiempo acumulado y mensajes personalizados según el desempeño.</li>
+    </ul>
+  </div>
 
-**Pomo-UNISON** permite al usuario configurar sesiones de estudio utilizando la técnica Pomodoro.
+  <br />
 
-El usuario puede:
+  <h3>🛠 Tecnologías y Librerías</h3>
+  <table>
+    <tr>
+      <td align="center"><b>Librería</b></td>
+      <td align="center"><b>Uso</b></td>
+      <td align="center"><b>Versión</b></td>
+    </tr>
+    <tr>
+      <td><b>Google Fonts</b></td>
+      <td>Fuentes manuscritas (Patrick Hand, Indie Flower).</td>
+      <td>^6.2.1</td>
+    </tr>
+    <tr>
+      <td><b>Phosphor Icons</b></td>
+      <td>Iconografía con estilo de trazo manual o boceto.</td>
+      <td>^2.1.0</td>
+    </tr>
+    <tr>
+      <td><b>Dart Math</b></td>
+      <td>Generación de mensajes motivacionales aleatorios.</td>
+      <td>N/A</td>
+    </tr>
+  </table>
 
-- Configurar la duración del tiempo de **trabajo**
-- Configurar el tiempo de **descanso**
-- Definir el número de **ciclos**
-- Iniciar una sesión de estudio
-- Pausar o detener el temporizador
-- Recibir **mensajes motivacionales**
-- Visualizar un **resumen final de productividad**
+  <br />
 
-Durante el modo descanso la aplicación cambia su paleta visual para comunicar un estado de relajación.
+  <h3>🎨 Galería de la Aplicación</h3>
+  <p><i>Estética basada en paleta de ColorHunt (#355872, #7AAACE, #9CD5FF, #F7F8F0).</i></p>
+  
+  <table>
+    <tr>
+      <td align="center"><img src="images/screens/inicio.png" width="180"><br><sub>Inicio </sub></td>
+      <td align="center"><img src="images/screens/seleccion.png" width="180"><br><sub>Configuración </sub></td>
+      <td align="center"><img src="images/screens/empezo.png" width="180"><br><sub>Temporizador </sub></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="images/screens/descanso.png" width="180"><br><sub>Descanso </sub></td>
+      <td align="center"><img src="images/screens/final.png" width="180"><br><sub>Resumen </sub></td>
+      <a href="release/pomo-unison.apk" download>
+  <img src="https://img.shields.io/badge/Descargar-APK-success?style=for-the-badge&logo=android" alt="Descargar APK">
+</a>
+    </tr>
+  </table>
 
----
+  <br />
 
-# 👨‍💻 Integrantes del equipo
-
-- Saul Filiberto Espinoza Rivera
-- Lilian Yeitnaletzi Álvarez Portillo
-- María Yamile Valencia Loroña
-- Orlando Cervantes Sousa
-- Hugo Alan Hinojoza Lopez
-- Sebastián Molina Pérez
-
-Universidad de Sonora
-
----
-
-# 🛠 Tecnologías utilizadas
-
-### Flutter
-Framework multiplataforma para desarrollo de aplicaciones móviles.
-
-Versión utilizada:
-Flutter SDK 3.x
-
----
-
-### Dart
-Lenguaje de programación utilizado por Flutter para construir aplicaciones reactivas.
-
----
-
-### Provider
-Gestor de estado utilizado para separar la lógica de negocio de la interfaz gráfica.
-
-Versión:
-provider: ^6.1.2
-
----
-
-### Google Fonts
-Biblioteca utilizada para aplicar tipografías estilo manuscrito que refuerzan el diseño visual.
-
-Versión:
-google_fonts: ^6.2.1
-
----
-
-### Phosphor Icons
-Colección de iconos vectoriales utilizada para los controles de la aplicación.
-
-Versión:
-phosphor_flutter: ^2.1.0
-
----
-
-# 🎨 Diseño de la aplicación
-
-La interfaz sigue una estética **hand-drawn**, caracterizada por:
-
-- Bordes irregulares simulando trazos hechos a mano
-- Tipografía estilo manuscrito
-- Colores vibrantes seleccionados desde **ColorHunt**
-- Indicadores visuales animados
-- Cambio de color entre **modo trabajo** y **modo descanso**
-
----
-
-# 📸 Capturas de pantalla
-
-## Pantalla de inicio
-![Inicio](images/screens/inicio.png)
-
-## Configuración de sesión
-![Configuración](images/screens/seleccion.png)
-
-## Temporizador
-![Temporizador](images/screens/empezo.png)
-
-## Descanso
-![Descanso](images/screens/descanso.png)
-
-## Resumen final
-![Resumen](images/screens/final.png)
-
----
-
-# 📦 Release
-
-La versión instalable de la aplicación puede descargarse aquí:
-
-👉 **Release 1.0 APK**
-/release/pomo-unison.apk
-
-
----
-
-# 📚 Características implementadas
-
-✔ Temporizador en tiempo real  
-✔ Gestión de estado con Provider  
-✔ Navegación entre pantallas  
-✔ Mensajes motivacionales dinámicos  
-✔ Indicador circular de progreso  
-✔ Resumen de sesión  
-✔ Cambio visual entre trabajo y descanso  
-✔ Diseño UI personalizado
-
----
-
-### Créditos del Equipo
-Este proyecto fue desarrollado por:
-* Saul Filiberto Espinoza Rivera
-* Lilian Yeitnaletzi Álvarez portillo
-* María Yamile Valencia Loroña
-* Orlando Cervantes Sousa
-* Hugo Alan Hinojoza Lopez
-* Sebastián Molina Pérez
+  <h3>👨‍💻 Equipo de Desarrollo - UNISON</h3>
+  <p>Proyecto para la materia de Programación de Sistemas III.</p>
+  <p>
+    <b>Saúl Filiberto Espinoza Rivera</b> | Lilian Yeitnaletzi Álvarez Portillo | María Yamile Valencia Loroña<br>
+    Orlando Cervantes Sousa | Hugo Alan Hinojoza Lopez | Sebastián Molina Pérez
+  </p>
+</div>
