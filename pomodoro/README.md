@@ -1,83 +1,172 @@
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Universidad_de_Sonora_Logo.png" width="80" alt="UNISON Logo">
-  <h1>🍅 Pomo-UNISON</h1>
-  <p><i>"Productividad con un toque artesanal"</i></p>
 
-  <p>
-    <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
-    <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
-    <img src="https://img.shields.io/badge/Provider-61.2-blue?style=for-the-badge" alt="Provider">
-  </p>
+<img src="/images/logo_unison.png" width="90" alt="UNISON Logo">
 
-  <hr />
+# 📚 Pomo-UNISON
+### *Productividad con un toque artesanal*
 
-  <h3>📱 Descripción de la Aplicación</h3>
-  <p align="justify">
-    <b>Pomo-UNISON</b> es un temporizador interactivo desarrollado en <b>Flutter</b>. Implementa la técnica Pomodoro mediante una estética visual <i>hand-drawn</i> que busca calidez y personalidad en la interfaz. La aplicación gestiona de forma fluida los ciclos de enfoque y descanso, asegurando una experiencia de usuario (UX) pulida y funcional.
-  </p>
+<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white">
+<img src="https://img.shields.io/badge/Provider-State%20Management-blue?style=for-the-badge">
 
-  <div align="left" style="background-color: #F7F8F0; padding: 15px; border: 2px solid #355872; border-radius: 15px 50px 30px 5px;">
-    <h4>✨ Características Principales</h4>
-    <ul>
-      <li><b>Configuración Flexible:</b> Ajuste de bloques de trabajo (1-60 min) , descanso corto (1-30 min)  y ciclos (1-8).</li>
-      <li><b>Lógica Desacoplada:</b> Gestión de estado mediante Provider para separar la interfaz de la lógica del temporizador.</li>
-      <li><b>Transiciones Orgánicas:</b> Cambios automáticos entre modo trabajo y descanso con notificaciones visuales claras.</li>
-      <li><b>Resumen de Sesión:</b> Retroalimentación detallada del tiempo acumulado y mensajes personalizados según el desempeño.</li>
-    </ul>
-  </div>
+---
 
-  <br />
+## 📖 Descripción de la Aplicación
 
-  <h3>🛠 Tecnologías y Librerías</h3>
-  <table>
-    <tr>
-      <td align="center"><b>Librería</b></td>
-      <td align="center"><b>Uso</b></td>
-      <td align="center"><b>Versión</b></td>
-    </tr>
-    <tr>
-      <td><b>Google Fonts</b></td>
-      <td>Fuentes manuscritas (Patrick Hand, Indie Flower).</td>
-      <td>^6.2.1</td>
-    </tr>
-    <tr>
-      <td><b>Phosphor Icons</b></td>
-      <td>Iconografía con estilo de trazo manual o boceto.</td>
-      <td>^2.1.0</td>
-    </tr>
-    <tr>
-      <td><b>Dart Math</b></td>
-      <td>Generación de mensajes motivacionales aleatorios.</td>
-      <td>N/A</td>
-    </tr>
-  </table>
+</div>
 
-  <br />
+<p align="justify">
 
-  <h3>🎨 Galería de la Aplicación</h3>
-  <p><i>Estética basada en paleta de ColorHunt (#355872, #7AAACE, #9CD5FF, #F7F8F0).</i></p>
-  
-  <table>
-    <tr>
-      <td align="center"><img src="images/screens/inicio.png" width="180"><br><sub>Inicio </sub></td>
-      <td align="center"><img src="images/screens/seleccion.png" width="180"><br><sub>Configuración </sub></td>
-      <td align="center"><img src="images/screens/empezo.png" width="180"><br><sub>Temporizador </sub></td>
-    </tr>
-    <tr>
-      <td align="center"><img src="images/screens/descanso.png" width="180"><br><sub>Descanso </sub></td>
-      <td align="center"><img src="images/screens/final.png" width="180"><br><sub>Resumen </sub></td>
-      <a href="release/pomo-unison.apk" download>
-  <img src="https://img.shields.io/badge/Descargar-APK-success?style=for-the-badge&logo=android" alt="Descargar APK">
+<b>Pomo-UNISON</b> es una aplicación desarrollada en <b>Flutter</b> que implementa la técnica de productividad <b>Pomodoro</b>.  
+Su interfaz utiliza un estilo visual <i>hand-drawn</i> que busca transmitir una sensación cálida y artesanal, combinando una experiencia visual amigable con una estructura técnica clara.
+
+La aplicación permite gestionar ciclos de estudio y descanso de forma automática, ayudando a los estudiantes a mantener la concentración y mejorar su rendimiento académico.
+
+</p>
+
+---
+
+<div align="center">
+
+## ✨ Características Principales
+
+</div>
+
+- ⚙ **Configuración Flexible**  
+  Ajuste de bloques de trabajo (1-60 min), descansos (1-30 min) y número de ciclos (1-8).
+
+- 🧠 **Lógica Desacoplada**  
+  Manejo del estado mediante **Provider**, separando la lógica del temporizador de la interfaz gráfica.
+
+- 🔄 **Transiciones Automáticas**  
+  Cambios automáticos entre **modo trabajo** y **modo descanso**.
+
+- 📊 **Resumen de Sesión**  
+  Estadísticas del tiempo de estudio y descanso al finalizar la sesión.
+
+- 💬 **Mensajes Motivacionales**  
+  Durante los descansos se muestran mensajes aleatorios para incentivar la productividad.
+
+---
+
+<div align="center">
+
+## ⚙ Tecnologías y Librerías
+
+<table>
+<tr>
+<td align="center"><b>Tecnología</b></td>
+<td align="center"><b>Uso</b></td>
+<td align="center"><b>Versión</b></td>
+</tr>
+
+<tr>
+<td><b>Flutter</b></td>
+<td>Framework para desarrollo de aplicaciones multiplataforma</td>
+<td>3.x</td>
+</tr>
+
+<tr>
+<td><b>Dart</b></td>
+<td>Lenguaje de programación principal</td>
+<td>3.x</td>
+</tr>
+
+<tr>
+<td><b>Provider</b></td>
+<td>Gestión del estado de la aplicación</td>
+<td>^6.1.2</td>
+</tr>
+
+<tr>
+<td><b>Google Fonts</b></td>
+<td>Fuentes manuscritas (Patrick Hand, Indie Flower)</td>
+<td>^6.2.1</td>
+</tr>
+
+<tr>
+<td><b>Phosphor Icons</b></td>
+<td>Iconografía estilo boceto</td>
+<td>^2.1.0</td>
+</tr>
+
+<tr>
+<td><b>Dart Math</b></td>
+<td>Generación de mensajes motivacionales aleatorios</td>
+<td>N/A</td>
+</tr>
+
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+## 📸 Galería de la Aplicación
+
+<i>Paleta basada en ColorHunt</i>  
+<b>#355872 | #7AAACE | #9CD5FF | #F7F8F0</b>
+
+<br>
+
+<table>
+<tr>
+<td align="center">
+<img src="images/screens/inicio.png" width="200"><br>
+<sub>Inicio</sub>
+</td>
+
+<td align="center">
+<img src="images/screens/seleccion.png" width="200"><br>
+<sub>Configuración</sub>
+</td>
+
+<td align="center">
+<img src="images/screens/empezo.png" width="200"><br>
+<sub>Temporizador</sub>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<img src="images/screens/descanso.png" width="200"><br>
+<sub>Modo Descanso</sub>
+</td>
+
+<td align="center">
+<img src="images/screens/final.png" width="200"><br>
+<sub>Resumen</sub>
+</td>
+</tr>
+</table>
+
+<br>
+
+## 📦 Descargar Aplicación
+
+<a href="FLUTTER/releases/tag/Flutterapks">
+<img src="https://img.shields.io/badge/Descargar-APK-success?style=for-the-badge&logo=android&logoColor=white">
 </a>
-    </tr>
-  </table>
 
-  <br />
+</div>
 
-  <h3>👨‍💻 Equipo de Desarrollo - UNISON</h3>
-  <p>Proyecto para la materia de Programación de Sistemas III.</p>
-  <p>
-    <b>Saúl Filiberto Espinoza Rivera</b> | Lilian Yeitnaletzi Álvarez Portillo | María Yamile Valencia Loroña<br>
-    Orlando Cervantes Sousa | Hugo Alan Hinojoza Lopez | Sebastián Molina Pérez
-  </p>
+---
+
+<div align="center">
+
+## 👨‍💻 Equipo de Desarrollo  
+**Universidad de Sonora — Programación de Sistemas III**
+
+<br>
+
+**Saúl Filiberto Espinoza Rivera**  
+Lilian Yeitnaletzi Álvarez Portillo  
+María Yamile Valencia Loroña  
+
+Orlando Cervantes Sousa  
+Hugo Alan Hinojoza Lopez  
+Sebastián Molina Pérez
+
 </div>
