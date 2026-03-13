@@ -146,7 +146,7 @@ La aplicación permite gestionar ciclos de estudio y descanso de forma automáti
 
 ## 📦 Descargar Aplicación
 
-<a href="FLUTTER/releases/tag/Flutterapks">
+<a href="https://github.com/OrlandoCvs/FLUTTER/releases/download/Flutterapks/pomo-unison.apk">
 <img src="https://img.shields.io/badge/Descargar-APK-success?style=for-the-badge&logo=android&logoColor=white">
 </a>
 
