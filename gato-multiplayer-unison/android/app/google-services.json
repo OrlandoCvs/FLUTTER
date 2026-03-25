@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "559612395421",
+    "firebase_url": "https://gatomultiplayer-e2706-default-rtdb.firebaseio.com",
+    "project_id": "gatomultiplayer-e2706",
+    "storage_bucket": "gatomultiplayer-e2706.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559612395421:android:a2947400443560eac13974",
+        "android_client_info": {
+          "package_name": "com.example.gato_multiplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559612395421-04nvuearp6noirr5aj4h0j27oeo8rm7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpb1_MDOoL55g0MfUmR92PXkk_vnA9eDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559612395421-04nvuearp6noirr5aj4h0j27oeo8rm7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
