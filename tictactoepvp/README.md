@@ -21,10 +21,10 @@
 
 <div align="center">
 
-| LOGIN / REGISTRO | LOBBY | JUEGO |
+| LOGIN / REGISTRO | LOBBY / SALA | PARTIDA EN VIVO |
 | :---: | :---: | :---: |
-| <img src="screenshots/login.png" width="220" alt="Login" onerror="this.src='https://via.placeholder.com/220x450?text=LOGIN+SCREEN'"> | <img src="screenshots/lobby.png" width="220" alt="Lobby" onerror="this.src='https://via.placeholder.com/220x450?text=LOBBY+SCREEN'"> | <img src="screenshots/game.png" width="220" alt="Juego" onerror="this.src='https://via.placeholder.com/220x450?text=GAME+SCREEN'"> |
-| *Autenticación* | *Sala de espera* | *Partida en vivo* |
+| <img src="assets/images/login.png" width="220" alt="Login"> | <img src="assets/images/espera.png" width="220" alt="Lobby"> | <img src="assets/images/partida.png" width="220" alt="Juego"> |
+| *🔐 Autenticación* | *🏠 Sala de espera* | *🎮 Gameplay Real* |
 
 </div>
 
