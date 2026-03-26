@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "564235304621",
+    "project_id": "tictactoepvp-8c663",
+    "storage_bucket": "tictactoepvp-8c663.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564235304621:android:2100d81806b942a5a89024",
+        "android_client_info": {
+          "package_name": "com.example.tictactoepvp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOT0q_pQ5Mmtt9L4SpXLPc877eOS6vyYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
