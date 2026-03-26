@@ -13,31 +13,31 @@ class AuthService {
   // ── Registro ──────────────────────────────────────────────────────────────
 
   /// Registra un nuevo usuario con email, password y username
-Future<UserModel> register({
-  required String email,
-  required String password,
-  required String username,
-}) async {
-  // 1. Crear cuenta en Firebase Auth primero
-  final credential = await _auth.createUserWithEmailAndPassword(
-    email: email,
-    password: password,
-  );
+  Future<UserModel> register({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
+    // 1. Crear cuenta en Firebase Auth primero
+    final credential = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-  // 2. Ya autenticado, guardar perfil en Firestore
-  final user = UserModel(
-    uid: credential.user!.uid,
-    username: username,
-    email: email,
-  );
+    // 2. Ya autenticado, guardar perfil en Firestore
+    final user = UserModel(
+      uid: credential.user!.uid,
+      username: username,
+      email: email,
+    );
 
-  await _db
-      .collection('users')
-      .doc(user.uid)
-      .set(user.toMap());
+    await _db
+        .collection('users')
+        .doc(user.uid)
+        .set(user.toMap());
 
-  return user;
-}
+    return user;
+  }
 
   // ── Inicio de sesión ──────────────────────────────────────────────────────
 
@@ -60,13 +60,19 @@ Future<UserModel> register({
 
   // ── Cierre de sesión ──────────────────────────────────────────────────────
 
-  Future<void> signOut() => _auth.signOut();
+  Future<void> signOut() async {
+    await _auth.signOut();
+  }
 
   // ── Obtener perfil ────────────────────────────────────────────────────────
 
   Future<UserModel?> getUserProfile(String uid) async {
-    final doc = await _db.collection('users').doc(uid).get();
-    if (!doc.exists) return null;
-    return UserModel.fromMap(doc.data()!, doc.id);
+    try {
+      final doc = await _db.collection('users').doc(uid).get();
+      if (!doc.exists) return null;
+      return UserModel.fromMap(doc.data()!, doc.id);
+    } catch (e) {
+      return null;
+    }
   }
 }

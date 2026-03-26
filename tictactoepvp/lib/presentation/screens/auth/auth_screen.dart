@@ -18,11 +18,10 @@ class _AuthScreenState extends State<AuthScreen> {
   bool _isLogin = true;
   bool _isLoading = false;
 
-  // Controladores
-  final _emailCtrl    = TextEditingController();
+  final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
   final _usernameCtrl = TextEditingController();
-  final _formKey      = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -32,8 +31,6 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
 
-  // ── Acciones ──────────────────────────────────────────────────────────────
-
   Future<void> _submit() async {
     if (!(_formKey.currentState?.validate() ?? false)) return;
     setState(() => _isLoading = true);
@@ -41,19 +38,19 @@ class _AuthScreenState extends State<AuthScreen> {
     try {
       if (_isLogin) {
         await _authService.signIn(
-          email:    _emailCtrl.text.trim(),
+          email: _emailCtrl.text.trim(),
           password: _passwordCtrl.text,
         );
       } else {
         await _authService.register(
-          email:    _emailCtrl.text.trim(),
+          email: _emailCtrl.text.trim(),
           password: _passwordCtrl.text,
           username: _usernameCtrl.text.trim(),
         );
       }
-    } on Exception catch (e) {
+    } catch (e) {
       if (!mounted) return;
-      _showError(e.toString().replaceAll('Exception: ', ''));
+      _showError("Error de autenticación. Revisa tus datos.");
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -63,13 +60,7 @@ class _AuthScreenState extends State<AuthScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: AppColors.lose.withOpacity(0.9),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            fontFamily: 'monospace',
-            color: Colors.white,
-          ),
-        ),
+        content: Text(msg, style: const TextStyle(fontFamily: 'monospace', color: Colors.white, fontSize: 12)),
       ),
     );
   }
@@ -82,151 +73,91 @@ class _AuthScreenState extends State<AuthScreen> {
     });
   }
 
-  // ── UI ────────────────────────────────────────────────────────────────────
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 24),
+        child: Center( // Centramos todo el contenido
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min, // Ocupa solo el espacio necesario
+                children: [
+                  const _UnisonLogo(),
+                  const SizedBox(height: 20),
+                  Text('PIXEL GATO', style: AppTextStyles.pixelTitle.copyWith(fontSize: 28))
+                      .animate().fadeIn().slideY(begin: -0.2),
+                  const SizedBox(height: 4),
+                  Text('TIC · TAC · TOE', style: AppTextStyles.pixelDim.copyWith(letterSpacing: 2, fontSize: 12)),
+                  
+                  const SizedBox(height: 12),
+                  
+                  // Créditos reducidos para evitar overflow
+                  Text(
+                    'EQUIPO: Espinoza, Álvarez, Valencia, Cervantes, Hinojoza, Molina',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.pixelDim.copyWith(fontSize: 9),
+                  ).animate().fadeIn(delay: 400.ms),
 
-                // Logo Universidad de Sonora (coloca tu imagen en assets/images/unison.png)
-                _UnisonLogo(),
+                  const SizedBox(height: 24),
+                  _ModeToggle(isLogin: _isLogin, onToggle: _toggleMode),
+                  const SizedBox(height: 24),
 
-                const SizedBox(height: 24),
+                  if (!_isLogin) ...[
+                    _RetroField(
+                      controller: _usernameCtrl,
+                      label: 'USUARIO',
+                      icon: Icons.person_outline,
+                      validator: (v) => (v == null || v.length < 3) ? 'Corto' : null,
+                    ),
+                    const SizedBox(height: 12),
+                  ],
 
-                // Título del juego
-                Text('TICTACTOE PVP', style: AppTextStyles.pixelTitle)
-                    .animate()
-                    .fadeIn(duration: 600.ms)
-                    .slideY(begin: -0.3),
-
-                const SizedBox(height: 6),
-                Text(
-                  'TIC · TAC · TOE',
-                  style: AppTextStyles.pixelDim.copyWith(letterSpacing: 4),
-                ).animate().fadeIn(delay: 300.ms),
-
-                const SizedBox(height: 8),
-                // Créditos del equipo
-                Text(
-                  'Saul Filiberto Espinoza Rivera & Lilian Yeitnaletzi Álvarez portillo & María Yamile Valencia Loroña & Orlando Cervantes Sousa & Hugo Alan Hinojoza Lopez & Sebastián Molina Pérez',
-                  style: AppTextStyles.pixelDim,
-                ).animate().fadeIn(delay: 400.ms),
-
-                const SizedBox(height: 40),
-
-                // Selector Login / Registro
-                _ModeToggle(isLogin: _isLogin, onToggle: _toggleMode),
-
-                const SizedBox(height: 32),
-
-                // Campos del formulario
-                if (!_isLogin) ...[
                   _RetroField(
-                    controller: _usernameCtrl,
-                    label: 'USUARIO',
-                    icon: Icons.person_outline,
-                    validator: (v) {
-                      if (v == null || v.isEmpty) return 'Ingresa tu usuario';
-                      if (v.length < 3) return 'Mínimo 3 caracteres';
-                      return null;
-                    },
+                    controller: _emailCtrl,
+                    label: 'CORREO',
+                    icon: Icons.mail_outline,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (v) => (v == null || !v.contains('@')) ? 'Inválido' : null,
                   ),
+                  const SizedBox(height: 12),
+
+                  _RetroField(
+                    controller: _passwordCtrl,
+                    label: 'CONTRASEÑA',
+                    icon: Icons.lock_outline,
+                    obscureText: true,
+                    validator: (v) => (v == null || v.length < 6) ? 'Mínimo 6' : null,
+                  ),
+
+                  const SizedBox(height: 28),
+
+                  if (_isLoading)
+                    const CircularProgressIndicator(color: AppColors.primary)
+                  else
+                    RetroButton(
+                      label: _isLogin ? 'INGRESAR' : 'CREAR CUENTA',
+                      onPressed: _submit,
+                      color: AppColors.primary,
+                      fontSize: 14,
+                    ),
+
                   const SizedBox(height: 16),
-                ],
-
-                _RetroField(
-                  controller: _emailCtrl,
-                  label: 'CORREO',
-                  icon: Icons.mail_outline,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (v) {
-                    if (v == null || v.isEmpty) return 'Ingresa tu correo';
-                    if (!v.contains('@')) return 'Correo no válido';
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-
-                _RetroField(
-                  controller: _passwordCtrl,
-                  label: 'CONTRASEÑA',
-                  icon: Icons.lock_outline,
-                  obscureText: true,
-                  validator: (v) {
-                    if (v == null || v.length < 6) {
-                      return 'Mínimo 6 caracteres';
-                    }
-                    return null;
-                  },
-                ),
-
-                const SizedBox(height: 36),
-
-                if (_isLoading)
-                  const CircularProgressIndicator(color: AppColors.primary)
-                else
-                  RetroButton(
-                    label: _isLogin ? 'INICIAR SESIÓN' : 'REGISTRARSE',
-                    onPressed: _submit,
-                    color: AppColors.primary,
-                    fontSize: 15,
-                  ),
-
-                const SizedBox(height: 20),
-
-                GestureDetector(
-                  onTap: _toggleMode,
-                  child: Text(
-                    _isLogin
-                        ? '¿No tienes cuenta? REGÍSTRATE'
-                        : '¿Ya tienes cuenta? INICIA SESIÓN',
-                    style: AppTextStyles.pixelDim.copyWith(
-                      color: AppColors.info,
-                      decoration: TextDecoration.underline,
+                  GestureDetector(
+                    onTap: _toggleMode,
+                    child: Text(
+                      _isLogin ? '¿No tienes cuenta? REGÍSTRATE' : '¿Ya tienes cuenta? LOGIN',
+                      style: AppTextStyles.pixelDim.copyWith(
+                        color: AppColors.info,
+                        fontSize: 11,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// ── Subwidgets ──────────────────────────────────────────────────────────────
-
-class _UnisonLogo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Intenta cargar el logo; si no existe muestra un placeholder
-    return Container(
-      width: 80,
-      height: 80,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.accent, width: 2),
-        boxShadow: [BoxShadow(color: AppColors.accent.withOpacity(0.3), blurRadius: 12)],
-      ),
-      child: ClipRect(
-        child: Image.asset(
-          'assets/images/unison.png',
-          fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => Center(
-            child: Text(
-              'UNISON',
-              style: AppTextStyles.pixelDim.copyWith(
-                color: AppColors.accent,
-                fontSize: 10,
+                ],
               ),
             ),
           ),
@@ -235,6 +166,39 @@ class _UnisonLogo extends StatelessWidget {
     );
   }
 }
+
+class _UnisonLogo extends StatelessWidget {
+  const _UnisonLogo();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        // Efecto retro para que el logo resalte
+        border: Border.all(color: AppColors.accent, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.accent.withOpacity(0.2),
+            blurRadius: 10,
+          )
+        ],
+      ),
+      child: Image.asset(
+        'assets/images/unison.png',
+        fit: BoxFit.contain,
+        // Si la imagen no carga, mostramos un fallback para que no truene la app
+        errorBuilder: (context, error, stackTrace) => const Center(
+          child: Icon(Icons.broken_image, color: AppColors.accent),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Subwidgets ──────────────────────────────────────────────────────────────
+
+
 
 class _ModeToggle extends StatelessWidget {
   final bool isLogin;

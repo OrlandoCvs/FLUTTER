@@ -6,6 +6,7 @@ import '../../../data/models/game_model.dart';
 import '../../../data/services/auth_service.dart';
 import '../../widgets/retro_button.dart';
 import '../lobby/lobby_screen.dart';
+import '../auth/auth_screen.dart'; // Importamos para la navegación directa
 
 class ResultsScreen extends StatelessWidget {
   final GameModel game;
@@ -36,6 +37,23 @@ class ResultsScreen extends StatelessWidget {
     if (_isDraw) return '🤝';
     if (_iWon)   return '🏆';
     return '💀';
+  }
+
+  // ── Lógica de Cierre de Sesión ─────────────────────────────────────────────
+  Future<void> _handleSignOut(BuildContext context) async {
+    final authService = AuthService();
+    
+    // 1. Cerramos sesión en Firebase
+    await authService.signOut();
+
+    // 2. Limpiamos TODA la pila de navegación y mandamos al Login
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const AuthScreen()),
+        (route) => false,
+      );
+    }
   }
 
   @override
@@ -78,7 +96,7 @@ class ResultsScreen extends StatelessWidget {
 
               // Botones de acción
               RetroButton(
-                label: '▶  VOLVER A JUGAR',
+                label: '▶   VOLVER A JUGAR',
                 onPressed: () => Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_) => const LobbyScreen()),
@@ -90,9 +108,10 @@ class ResultsScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
+              // Botón de Cerrar sesión corregido
               RetroButton(
                 label: 'CERRAR SESIÓN',
-                onPressed: () => AuthService().signOut(),
+                onPressed: () => _handleSignOut(context), // Nueva función segura
                 color: AppColors.textDim,
                 isOutlined: true,
               ),

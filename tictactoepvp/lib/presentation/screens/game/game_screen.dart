@@ -1,3 +1,5 @@
+// lib/presentation/screens/game/game_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/constants/app_colors.dart';
@@ -5,6 +7,7 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../data/models/game_model.dart';
 import '../../../data/services/game_service.dart';
 import '../../../data/services/sound_service.dart';
+import '../../../data/services/auth_service.dart';
 import '../../widgets/board_cell.dart';
 import '../results/results_screen.dart';
 
@@ -24,6 +27,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   final _gameService = GameService();
+  final _authService = AuthService();
   final _sound       = SoundService.instance;
 
   GameModel? _game;
@@ -38,13 +42,9 @@ class _GameScreenState extends State<GameScreen> {
 
   void _onGameUpdate(GameModel? game) {
     if (game == null || !mounted) return;
-
-    // Determinar símbolo del jugador actual
     _mySymbol ??= game.playerXId == widget.currentUserId ? 'X' : 'O';
-
     setState(() => _game = game);
 
-    // Ir a resultados cuando termine
     if (game.isFinished && !_navigated) {
       _navigated = true;
       _playEndSound(game);
@@ -64,24 +64,39 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _playEndSound(GameModel game) {
-    if (game.winnerSymbol == 'draw') {
-      _sound.playDraw();
-    } else if (game.winnerId == widget.currentUserId) {
-      _sound.playWin();
-    } else {
-      _sound.playLose();
+    // Envolvemos en un try-catch interno por si el archivo sigue dando error de formato
+    try {
+      if (game.winnerSymbol == 'draw') {
+        _sound.playDraw();
+      } else if (game.winnerId == widget.currentUserId) {
+        _sound.playWin();
+      } else {
+        _sound.playLose();
+      }
+    } catch (e) {
+      debugPrint('Error al reproducir sonido final: $e');
+    }
+  }
+
+  Future<void> _handleSignOut() async {
+    await _authService.signOut();
+    if (mounted) {
+      Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
     }
   }
 
   Future<void> _onCellTap(int index) async {
     if (_game == null || _mySymbol == null) return;
-    if (_game!.currentTurn != _mySymbol)       return;
+    if (_game!.currentTurn != _mySymbol) return;
 
-    // Sonido al colocar
-    if (_mySymbol == 'X') {
-      _sound.playPlaceX();
-    } else {
-      _sound.playPlaceO();
+    try {
+      if (_mySymbol == 'X') {
+        _sound.playPlaceX();
+      } else {
+        _sound.playPlaceO();
+      }
+    } catch (e) {
+      debugPrint('Error de audio: $e');
     }
 
     await _gameService.makeMove(
@@ -91,8 +106,6 @@ class _GameScreenState extends State<GameScreen> {
       playerSymbol: _mySymbol!,
     );
   }
-
-  // ── UI ────────────────────────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
@@ -108,41 +121,78 @@ class _GameScreenState extends State<GameScreen> {
     final opponentName = mySymbol == 'X' ? game.playerOName : game.playerXName;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout_rounded, color: AppColors.textDim),
+            onPressed: () => _showExitDialog(),
+          ),
+        ],
+      ),
+      // Agregamos SingleChildScrollView para evitar el error de RenderFlex overflow
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              // ── Header ─────────────────────────────────────────────────
-              _GameHeader(
-                mySymbol:     mySymbol,
-                opponentName: opponentName,
-                isMyTurn:     isMyTurn,
-                currentTurn:  game.currentTurn,
-              ),
-
-              const Spacer(),
-
-              // ── Tablero ────────────────────────────────────────────────
-              AspectRatio(
-                aspectRatio: 1,
-                child: _Board(
-                  board:       game.board,
-                  winningLine: game.winningLine,
-                  isMyTurn:    isMyTurn,
-                  onCellTap:   _onCellTap,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                _GameHeader(
+                  mySymbol:     mySymbol,
+                  opponentName: opponentName,
+                  isMyTurn:     isMyTurn,
+                  currentTurn:  game.currentTurn,
                 ),
-              ),
 
-              const Spacer(),
+                const SizedBox(height: 40), // Espacio fijo en lugar de Spacer
 
-              // ── Indicador de turno ─────────────────────────────────────
-              _TurnIndicator(isMyTurn: isMyTurn, mySymbol: mySymbol),
+                // El tablero
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: _Board(
+                    board:       game.board,
+                    winningLine: game.winningLine,
+                    isMyTurn:     isMyTurn,
+                    onCellTap:   _onCellTap,
+                  ),
+                ),
 
-              const SizedBox(height: 20),
-            ],
+                const SizedBox(height: 40), // Espacio fijo en lugar de Spacer
+
+                _TurnIndicator(isMyTurn: isMyTurn, mySymbol: mySymbol),
+                
+                const SizedBox(height: 30), // Espacio al final para que no pegue con el borde
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _showExitDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.background,
+        title: Text('¿SALIR?', style: AppTextStyles.pixelSubtitle),
+        content: Text('Se cerrará tu sesión actual.', style: AppTextStyles.pixelDim),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('CANCELAR', style: TextStyle(color: AppColors.textDim)),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _handleSignOut();
+            },
+            child: const Text('CERRAR SESIÓN', style: TextStyle(color: AppColors.lose)),
+          ),
+        ],
       ),
     );
   }

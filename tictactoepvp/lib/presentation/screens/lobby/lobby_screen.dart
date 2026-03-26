@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,6 +11,7 @@ import '../../../data/models/user_model.dart';
 import '../../widgets/retro_button.dart';
 import '../game/game_screen.dart';
 import '../dashboard/dashboard_screen.dart';
+import '../auth/auth_screen.dart'; // Importamos AuthScreen por si acaso
 
 class LobbyScreen extends StatefulWidget {
   const LobbyScreen({super.key});
@@ -22,7 +24,8 @@ class _LobbyScreenState extends State<LobbyScreen> {
   final _authService = AuthService();
   final _gameService = GameService();
   final _codeCtrl    = TextEditingController();
-
+  
+  StreamSubscription? _gameSubscription;
   UserModel? _user;
   bool _isLoading = false;
   String? _createdRoomCode;
@@ -36,6 +39,7 @@ class _LobbyScreenState extends State<LobbyScreen> {
   @override
   void dispose() {
     _codeCtrl.dispose();
+    _gameSubscription?.cancel();
     super.dispose();
   }
 
@@ -45,8 +49,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
     final user = await _authService.getUserProfile(uid);
     if (mounted) setState(() => _user = user);
   }
-
-  // ── Crear partida ─────────────────────────────────────────────────────────
 
   Future<void> _createGame() async {
     if (_user == null) return;
@@ -60,8 +62,7 @@ class _LobbyScreenState extends State<LobbyScreen> {
         _isLoading       = false;
       });
 
-      // Escuchar hasta que el oponente se una
-      _gameService.watchGame(game.gameId).listen((updatedGame) {
+      _gameSubscription = _gameService.watchGame(game.gameId).listen((updatedGame) {
         if (updatedGame?.isPlaying == true && mounted) {
           Navigator.pushReplacement(
             context,
@@ -81,8 +82,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
       }
     }
   }
-
-  // ── Unirse a partida ──────────────────────────────────────────────────────
 
   Future<void> _joinGame() async {
     final code = _codeCtrl.text.trim().toUpperCase();
@@ -127,6 +126,31 @@ class _LobbyScreenState extends State<LobbyScreen> {
     );
   }
 
+  // ── Lógica de Cierre de Sesión MODIFICADA ───────────────────────────────────
+
+  Future<void> _handleSignOut() async {
+    try {
+      // 1. Cancelamos el stream de juego
+      await _gameSubscription?.cancel();
+      
+      // 2. Cerramos sesión en Firebase
+      await _authService.signOut();
+
+      // 3. Limpiamos TODA la pila de navegación. 
+      // Si '/' te está fallando, usamos MaterialPageRoute directamente a AuthScreen
+      // para asegurar que no quede nada "encima".
+      if (mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthScreen()),
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      _showError('Error al cerrar sesión: $e');
+    }
+  }
+
   // ── UI ────────────────────────────────────────────────────────────────────
 
   @override
@@ -138,7 +162,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -153,7 +176,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
                         ),
                     ],
                   ),
-                  // Botón dashboard
                   GestureDetector(
                     onTap: () => Navigator.push(
                       context,
@@ -172,13 +194,9 @@ class _LobbyScreenState extends State<LobbyScreen> {
               ),
 
               const SizedBox(height: 12),
-
-              // Estadísticas del usuario
               if (_user != null) _StatsBar(user: _user!),
-
               const SizedBox(height: 40),
 
-              // Sección crear partida
               Text('── CREAR SALA ──', style: AppTextStyles.pixelSubtitle)
                   .animate().fadeIn(delay: 200.ms),
               const SizedBox(height: 16),
@@ -194,7 +212,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
                       ),
               ),
 
-              // Mostrar código de sala creada
               if (_createdRoomCode != null) ...[
                 const SizedBox(height: 20),
                 _RoomCodeDisplay(code: _createdRoomCode!),
@@ -202,7 +219,6 @@ class _LobbyScreenState extends State<LobbyScreen> {
 
               const SizedBox(height: 40),
 
-              // Sección unirse
               Text('── UNIRSE ──', style: AppTextStyles.pixelSubtitle)
                   .animate().fadeIn(delay: 300.ms),
               const SizedBox(height: 16),
@@ -250,11 +266,10 @@ class _LobbyScreenState extends State<LobbyScreen> {
 
               const SizedBox(height: 60),
 
-              // Cerrar sesión
               Center(
                 child: RetroButton(
                   label: 'CERRAR SESIÓN',
-                  onPressed: () => _authService.signOut(),
+                  onPressed: _handleSignOut,
                   color: AppColors.textDim,
                   isOutlined: true,
                 ),
@@ -267,8 +282,7 @@ class _LobbyScreenState extends State<LobbyScreen> {
   }
 }
 
-// ── Subwidgets ──────────────────────────────────────────────────────────────
-
+// ... (Subwidgets _StatsBar, _Stat, _RoomCodeDisplay iguales)
 class _StatsBar extends StatelessWidget {
   final UserModel user;
   const _StatsBar({required this.user});
