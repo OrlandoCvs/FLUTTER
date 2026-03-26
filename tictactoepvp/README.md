@@ -11,8 +11,7 @@
 **Juego del Gato multijugador en tiempo real desarrollado con Flutter y Firebase.**
 *Autenticación, sincronización instantánea entre dispositivos, ranking global y una estética retro-terminal.*
 
-[⬇ DESCARGAR APK v1.0.0](https://github.com/OrlandoCvs/FLUTTER/raw/main/release/tictactoepvp.apk)
-
+[⬇ DESCARGAR APK v1.0.0](https://github.com/OrlandoCvs/FLUTTER/raw/main/tictactoepvp/release/tictactoepvp.apk)
 </div>
 
 ---
@@ -101,5 +100,5 @@ Desarrollado para la materia de **Programación de Sistemas III**
 ---
 
 **tic tac toe pvp — UNISON 2026**
-[REPOSITORIO](#) • [DESCARGAR APK](https://github.com/OrlandoCvs/FLUTTER/raw/main/release/tictactoepvp.apk) • [FIREBASE](https://console.firebase.google.com)
+[REPOSITORIO](#) • [DESCARGAR APK](https://github.com/OrlandoCvs/FLUTTER/raw/main/tictactoepvp/release/tictactoepvp.apk) • [FIREBASE](https://console.firebase.google.com)
 </div>
